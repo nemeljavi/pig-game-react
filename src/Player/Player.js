@@ -1,9 +1,25 @@
 import "./Player.css";
-// props ={name:'Player1', score: 43, current:0, isActive: true}
+//props = {name , 'Player1',score:43,current:0,isActive:true}
 function Player({ name, score, current, isActive }) {
-  // const {name, score, current, isActive } = props
+  // const {name ,score,current,isActive}=props
+  //let classPlayer
+  //if (isActive) {
+  // if(score>=100){
+  //  classPlayer = 'player  player--winner'
+  // }else {
+  // classPlayer = 'player  player--active'
+  // }
+  //
+  // } else {
+  // classPlayer = 'player'
+  //}
+  const classPlayer = isActive
+    ? score > 100
+      ? "player  player--winner"
+      : "player  player--active"
+    : "player";
   return (
-    <section className="player player--active">
+    <section className={classPlayer}>
       <h2 className="name">{name}</h2>
       <p className="score">{score}</p>
       <div className="current">
