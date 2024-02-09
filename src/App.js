@@ -1,11 +1,11 @@
 import "./App.css";
-import Player from './Player/Player'
+import Player from "./Player/Player";
 
 function App() {
   return (
     <main>
-      <Player name="Player 1" scpre={43} current={0} isActive={true} />
-      <Player name="Player 2" scpre={24} current={0} isActive={false} />
+      <Player name="Player 1" score={43} current={0} isActive={true} />
+      <Player name="Player 2" score={24} current={0} isActive={false} />
 
       <img src="dice-5.png" alt="Playing dice" className="dice" />
       <button className="btn btn--new">🔄 New game</button>
