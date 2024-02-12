@@ -1,18 +1,18 @@
 import "./Player.css";
-//props = {name , 'Player1',score:43,current:0,isActive:true}
+// props = {name: 'Player 1', score: 43, current: 0, isActive: true}
 function Player({ name, score, current, isActive }) {
-  // const {name ,score,current,isActive}=props
-  //let classPlayer
-  //if (isActive) {
-  // if(score>=100){
-  //  classPlayer = 'player  player--winner'
-  // }else {
-  // classPlayer = 'player  player--active'
-  // }
-  //
+  // const { name, score, current, isActive } = props
+
+  // let classPlayer
+  // if (isActive) {
+  //   if (score >= 100) {
+  //     classPlayer = 'player player--winner'
+  //   } else {
+  //     classPlayer = 'player player--active'
+  //   }
   // } else {
-  // classPlayer = 'player'
-  //}
+  //   classPlayer = 'player'
+  // }
 
   const classPlayer =
     score > 10
@@ -21,8 +21,10 @@ function Player({ name, score, current, isActive }) {
       ? "player player--active"
       : "player";
 
-  console.log(`Renderizando el componente Player para ${name} con 
-la clase ${classPlayer} y un score de ${score}`);
+  console.log(
+    `Renderizando el componente Player para ${name} con 
+    la clase ${classPlayer} y un score de ${score}`
+  );
 
   return (
     <section className={classPlayer}>

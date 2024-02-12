@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Player from "./Player/Player";
+
 // 1. definir variables de estado usando useState (activePlayer, score, current, diceNumber)
 // 2. definir funciones para manejar los eventos de click (handleNewGame, handleRollDice, handleHold)
 // 3. pasar las variables de estado y las funciones a los componentes Player y Dice
@@ -10,24 +11,23 @@ import Player from "./Player/Player";
 // 6. manejar el cambio de jugador activo cuando se obtiene un 1 al hacer click en el botón Roll dice
 // 7. manejar el cambio de jugador activo cuando se obtiene un 6 al hacer click en el botón Roll dice
 // 8. manejar el cambio de jugador activo cuando se obtiene un número diferente de 1 o 6 al hacer click en el botón Roll dice
-// 9. manejar el cambio de jugador activo cuando se hace click en el botón New gamefunction App() {
+// 9. manejar el cambio de jugador activo cuando se hace click en el botón New game
 
 function App() {
   const [activePlayer, setActivePlayer] = useState(1);
   const [score, setScore] = useState([0, 0]);
   const [current, setCurrent] = useState(0);
   const [diceNumber, setDiceNumber] = useState(0);
+
   const handleHold = () => {
-    setCurrent(0);
+    // para cambiar el score, se debe definir una nueva variable
+    // no modificamos el array, creamos uno nuevo!!!!
+    const newScore = [...score];
+    // newScore[activaPlayer -1] = newScore[activePlayer -1] + current
+    newScore[activePlayer - 1] += current;
+    setScore(newScore);
     setActivePlayer(activePlayer === 1 ? 2 : 1);
     setCurrent(0);
-
-    //para cambiar el score , se debe definir una nueva variable
-    //no modificamos el array,creamos uno nuevo!!!
-
-    const newScore = [...score];
-    newScore[activePlayer - 1] += current;
-    setScore(0);
   };
   const handleNewGame = () => {
     setActivePlayer(1);
@@ -37,7 +37,7 @@ function App() {
   };
 
   const handleRollDice = () => {
-    // const randomNumber = Math.floor(Math.random() * 6) +1
+    // const randomNumber = Math.floor(Math.random() * 6) + 1
     // setDiceNumber(randomNumber)
     setDiceNumber(Math.floor(Math.random() * 6) + 1);
   };
@@ -45,10 +45,13 @@ function App() {
   useEffect(() => {
     if (diceNumber === 1) {
       setActivePlayer((activePlayer) => (activePlayer === 1 ? 2 : 1));
+      setCurrent(0);
     } else {
+      // setCurrent (current + diceNumber)
       setCurrent((current) => current + diceNumber);
     }
   }, [diceNumber]);
+
   return (
     <main>
       <Player
@@ -71,15 +74,16 @@ function App() {
         />
       )}
       <button className="btn btn--new" onClick={handleNewGame}>
-        New game
+        :arrows_counterclockwise: New game
       </button>
       <button className="btn btn--roll" onClick={handleRollDice}>
-        Roll Dice
+        :game_die: Roll dice
       </button>
       <button className="btn btn--hold" onClick={handleHold}>
-        Hold
+        :inbox_tray: Hold
       </button>
     </main>
   );
 }
+
 export default App;
