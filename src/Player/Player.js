@@ -13,11 +13,17 @@ function Player({ name, score, current, isActive }) {
   // } else {
   // classPlayer = 'player'
   //}
-  const classPlayer = isActive
-    ? score > 100
-      ? "player  player--winner"
-      : "player  player--active"
-    : "player";
+
+  const classPlayer =
+    score > 10
+      ? "player player--winner"
+      : isActive
+      ? "player player--active"
+      : "player";
+
+  console.log(`Renderizando el componente Player para ${name} con 
+la clase ${classPlayer} y un score de ${score}`);
+
   return (
     <section className={classPlayer}>
       <h2 className="name">{name}</h2>
