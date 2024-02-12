@@ -15,7 +15,7 @@ function Player({ name, score, current, isActive }) {
   // }
 
   const classPlayer =
-    score > 10
+    score >= 10
       ? "player player--winner"
       : isActive
       ? "player player--active"
